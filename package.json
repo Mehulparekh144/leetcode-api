@@ -4,12 +4,17 @@
   "description": "It's a leetcode custom api. This API provides endpoints to retrieve details about a user's profile, badges, solved questions, contest details, contest history, submissions, calendar and and also daily questions, selected problem, list of problems.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "rimraf dist && tsc",
     "dev": "nodemon --exec ts-node src/index.ts",
     "start": "node dist/index.js",
+    "ts.check": "tsc --project tsconfig.json",
     "prestart": "npm run build",
     "test": "jest"
   },
+  "pre-commit": [
+    "ts.check",
+    "build"
+  ],
   "keywords": [],
   "author": "alfaarghya",
   "license": "ISC",
@@ -30,6 +35,8 @@
     "jest": "^29.7.0",
     "msw": "^2.2.3",
     "nodemon": "^3.1.0",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^6.0.1",
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2"
